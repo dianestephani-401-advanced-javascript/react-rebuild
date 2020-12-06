@@ -13,27 +13,61 @@ function ToDo(){
 
     async function getAll(){
         try{
-        let results = await axios({
-            method: 'get',
-            url: 'https://api-js401.herokuapp.com/api/v1/todo'
-        });
-        console.log('These are results*******', results.data.results);
+            let results = await axios({
+                method: 'get',
+                url: 'https://api-js401.herokuapp.com/api/v1/todo'
+            });
+            setItemList(results.data.results)
         }catch(err){
             console.log(err);
+        }
+       
+
+    };
+
+    async function makePost(item){
+        try{
+        let results = await axios({
+            method: 'post',
+            url: 'https://api-js401.herokuapp.com/api/v1/todo',
+            data: item
+        }); 
+        console.log('POST RESULTS***********', results)
+        getAll();
+        }catch (e){
+            console.log(e);
         }
 
     };
 
-    // async function makePut(){
-    //     let results = await axios({
-    //         method: 'get',
-    //         url: 'https://api-js401.herokuapp.com/',
-    //         data: {
-    //             //this is where we pass in data
-    //         }
-    //     });      
+    async function makePut(item, id){
+      try{
+      let results = await axios({
+          method: 'put',
+          url: `https://api-js401.herokuapp.com/api/v1/todo/${id}`,
+          data: item
+      }); 
+      console.log('Put RESULTS***********', results)
+      getAll();
+      }catch (e){
+          console.log(e);
+      }
 
-    // };
+  };
+
+  async function makeDelete(id){
+    try{
+    let results = await axios({
+        method: 'delete',
+        url: `https://api-js401.herokuapp.com/api/v1/todo/${id}`
+    }); 
+    console.log('dElEtE RESULTS***********', results)
+    getAll();
+    }catch (e){
+        console.log(e);
+    }
+
+};
 
 
     function updateList(arr){
@@ -43,8 +77,8 @@ function ToDo(){
     return(
         <>
 
-        <MyMainForm updateList={updateList} />
-        <List />
+        <MyMainForm updateList={updateList} makePost={makePost}/>
+        <List makeDelete={makeDelete} makePut={makePut} itemList={itemList} setItemList={setItemList}/>
         </>
     )
 }
