@@ -8,8 +8,8 @@ import {If, Else, Then} from 'react-if';
 
 function List(props){
 //We have item list in props!!!!!! Dummy!
+   
 
-  
   return(
     <PaginatedList
       list = {props.itemList}
@@ -17,21 +17,21 @@ function List(props){
       renderList = {list => (
         <>
         {list.map((item) => (
-          <Toast key={item._id}>
+          <Toast key={item._id} onClose={ () => props.makeDelete(item._id)}>
             <Toast.Header>
               
               <If condition={!item.complete}>
 
               <Then>
-              <Badge pill variant="danger">
-                Pending
-              </Badge>{' '}
+                <Badge pill variant="danger" onClick={ () => props.makePut(item,item._id)}>
+                  Pending
+                </Badge>{' '}
               </Then>
 
               <Else>
-              <Badge pill variant="success">
-                Complete
-              </Badge>{' '}
+                <Badge pill variant="success" onClick={ () => props.makePut(item,item._id)}>
+                  Complete
+                </Badge>{' '}
               </Else>
 
               </If>
