@@ -42,6 +42,14 @@ function ToDo(){
 
     async function makePut(item, id){
       try{
+          console.log('item on 45', item);
+          console.log(id);
+          if (item.complete){
+              item.complete = false;
+          } else {
+              item.complete = true;
+          }
+
       let results = await axios({
           method: 'put',
           url: `https://api-js401.herokuapp.com/api/v1/todo/${id}`,
@@ -77,8 +85,8 @@ function ToDo(){
     return(
         <>
 
-        <MyMainForm updateList={updateList} makePost={makePost}/>
-        <List makeDelete={makeDelete} makePut={makePut} itemList={itemList} setItemList={setItemList}/>
+            <MyMainForm updateList={updateList} makePost={makePost}/>
+            <List makeDelete={makeDelete} makePut={makePut} itemList={itemList} setItemList={setItemList}/>
         </>
     )
 }
