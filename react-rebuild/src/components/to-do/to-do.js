@@ -42,14 +42,12 @@ function ToDo(){
 
     async function makePut(item, id){
       try{
-          console.log('item on 45', item);
-          console.log(id);
-          if (item.complete){
-              item.complete = false;
-          } else {
-              item.complete = true;
-          }
-
+        //   if (item.complete){
+        //       item.complete = false;
+        //   } else {
+        //       item.complete = true;
+        //   }
+        item.complete = !item.complete;
       let results = await axios({
           method: 'put',
           url: `https://api-js401.herokuapp.com/api/v1/todo/${id}`,

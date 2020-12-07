@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Toast from 'react-bootstrap/Toast';
 import Badge from 'react-bootstrap/Badge';
 import {PaginatedList} from 'react-paginated-list';
 //npm i react-paginated-list and npm i styled-components? Not sure about this ask joe
 import {If, Else, Then} from 'react-if';
-
+import {SettingsContext} from '../../context/settings/settings-context.js'
 
 function List(props){
 //We have item list in props!!!!!! Dummy!
-   
-
+   const settings = useContext(SettingsContext);
+  console.log('settings line 12', settings);
   return(
     <PaginatedList
       list = {props.itemList}
-      itemsPerPage = {5}
+      itemsPerPage = {settings.page}
       renderList = {list => (
         <>
         {list.map((item) => (
