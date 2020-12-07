@@ -73,14 +73,14 @@ git clone https://github.com/dianestephani-401-advanced-javascript/react-rebuild
 
 ## Authors
 
-Diane Stephani
-Sarah Shatto
-Joe Pennock
-Ryan Geddes
-Jonathon Lee
-Edgar Romero 
-Chris Bortel
-Brandon Gibbs
-Davee Sok
+- Diane Stephani
+- Sarah Shatto
+- Joe Pennock
+- Ryan Geddes
+- Jonathon Lee
+- Edgar Romero 
+- Chris Bortel
+- Brandon Gibbs
+- Davee Sok
 
 ------------------------------
